@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="90m-gr-v6E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="90m-gr-v6E">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -117,6 +117,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h6T-y0-GPb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GFz-Ql-Kqr">
                             <size key="itemSize" width="214" height="116"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -143,6 +144,9 @@
                                     <constraint firstItem="bl9-rD-3s2" firstAttribute="leading" secondItem="yOe-nE-clw" secondAttribute="leadingMargin" constant="-8" id="gAp-mf-sMg"/>
                                     <constraint firstItem="bl9-rD-3s2" firstAttribute="top" secondItem="yOe-nE-clw" secondAttribute="topMargin" constant="-8" id="gaM-w4-rfU"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="memeImage" destination="bl9-rD-3s2" id="eIE-CX-cK5"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -162,10 +166,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="h6T-y0-GPb" id="fhe-zo-R7x"/>
+                        <outlet property="flowlayout" destination="GFz-Ql-Kqr" id="9Pu-e0-jQV"/>
+                        <outlet property="memecollectionView" destination="h6T-y0-GPb" id="C0j-YP-AB7"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRq-HM-YUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="290"/>
+            <point key="canvasLocation" x="508" y="291"/>
         </scene>
         <!--Edit Meme View Controller-->
         <scene sceneID="zLo-0i-FEd">
@@ -435,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZY-Vt-6px" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="573" y="1039"/>
+            <point key="canvasLocation" x="1073" y="936"/>
         </scene>
         <!--collection-->
         <scene sceneID="ds8-F5-Uio">

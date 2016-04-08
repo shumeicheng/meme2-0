@@ -24,7 +24,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
     @IBOutlet weak var imagePickerView: UIImageView!
     
     var tableView: UITableView!
-
+    var memecollectionView : UICollectionView!
     var imagePicker :UIImagePickerController!
     var firstTop = true
     var firstBottom = true
@@ -170,7 +170,9 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        tableView.reloadData()
+        
+        tableView?.reloadData()
+        memecollectionView?.reloadData()
     }
     
     @IBAction func sharePhota(sender: AnyObject) {
@@ -219,11 +221,11 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector:Selector("keyboardWillHide:"),
+            selector:#selector(EditMemeViewController.keyboardWillHide(_:)),
             name:UIKeyboardWillHideNotification,
             object:nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:( "keyboardWillShow:" )   , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:( #selector(EditMemeViewController.keyboardWillShow(_:)) )   , name: UIKeyboardWillShowNotification, object: nil)
         
      }
     
