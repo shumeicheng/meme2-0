@@ -98,7 +98,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VU4-xv-Zkd">
                             <connections>
-                                <segue destination="Go0-xM-w8n" kind="presentation" identifier="EditMemeSegue" id="KfJ-ha-xgh"/>
+                                <action selector="addMeme:" destination="uWd-OM-lbm" id="NEa-4p-iYV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -132,7 +132,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="214" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-rD-3s2">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-rD-3s2">
                                             <rect key="frame" x="0.0" y="0.0" width="214" height="116"/>
                                         </imageView>
                                     </subviews>
@@ -176,6 +176,38 @@
             </objects>
             <point key="canvasLocation" x="508" y="291"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="LG3-av-QLn">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="oBI-jj-e1r" customClass="MemeDetailViewController" customModule="meme2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mkk-4u-NNq"/>
+                        <viewControllerLayoutGuide type="bottom" id="r7f-h3-ET5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0gL-7a-0Ae">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Th-x7-bvg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Th-x7-bvg" firstAttribute="leading" secondItem="0gL-7a-0Ae" secondAttribute="leadingMargin" constant="-20" id="Krj-oP-Prc"/>
+                            <constraint firstItem="0Th-x7-bvg" firstAttribute="top" secondItem="Mkk-4u-NNq" secondAttribute="bottom" constant="-20" id="P4R-ue-ie7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Th-x7-bvg" secondAttribute="trailing" constant="-20" id="TVe-4c-Cjh"/>
+                            <constraint firstItem="r7f-h3-ET5" firstAttribute="top" secondItem="0Th-x7-bvg" secondAttribute="bottom" id="q8m-tu-nhF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeImage" destination="0Th-x7-bvg" id="OWB-mh-C57"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yeo-Ii-YIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="-11"/>
+        </scene>
         <!--Edit Meme View Controller-->
         <scene sceneID="zLo-0i-FEd">
             <objects>
@@ -188,11 +220,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-Og-v1s">
-                                <rect key="frame" x="0.0" y="59" width="600" height="458"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-Og-v1s">
+                                <rect key="frame" x="0.0" y="81" width="600" height="467"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-M7-YY7" userLabel="bottom bar">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="sKK-rd-Bey"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="album" id="Wci-Xg-bp6">
+                                        <connections>
+                                            <action selector="pickaImage:" destination="Go0-xM-w8n" id="EMR-4V-mAb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5CU-TX-2Yr"/>
+                                    <barButtonItem systemItem="camera" id="G8L-y6-hht">
+                                        <connections>
+                                            <action selector="pickaImageFromCamera:" destination="Go0-xM-w8n" id="qQW-fq-Wvp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="sKK-rd-Bey"/>
+                                    </mask>
+                                </variation>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-tN-1Kx">
+                                <rect key="frame" x="11" y="469" width="578" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Pd5-nc-qos"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COH-bG-c01">
+                                <rect key="frame" x="30" y="108" width="540" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cga-cY-7YO"/>
+                                    <constraint firstAttribute="width" constant="97" id="gSe-8w-id5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" id="hWu-am-yuR"/>
+                                    <constraint firstAttribute="height" constant="27" id="kn9-Gn-glB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cga-cY-7YO"/>
+                                        <exclude reference="gSe-8w-id5"/>
+                                        <exclude reference="hWu-am-yuR"/>
+                                        <exclude reference="kn9-Gn-glB"/>
+                                    </mask>
+                                </variation>
+                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5M-fQ-kh0">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="32" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Meme editor" id="TZK-Me-CC4">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="EA6-wV-cYf">
@@ -208,64 +291,42 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-M7-YY7" userLabel="bottom bar">
-                                <rect key="frame" x="0.0" y="517" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="sKK-rd-Bey"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="album" id="Wci-Xg-bp6">
-                                        <connections>
-                                            <action selector="pickaImage:" destination="Go0-xM-w8n" id="EMR-4V-mAb"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="geC-ZA-lf9"/>
-                                    <barButtonItem systemItem="camera" id="G8L-y6-hht">
-                                        <connections>
-                                            <action selector="pickaImageFromCamera:" destination="Go0-xM-w8n" id="qQW-fq-Wvp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="sKK-rd-Bey"/>
-                                    </mask>
-                                </variation>
-                            </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-tN-1Kx">
-                                <rect key="frame" x="269" y="467" width="63" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COH-bG-c01">
-                                <rect key="frame" x="252" y="90" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cga-cY-7YO"/>
-                                    <constraint firstAttribute="width" constant="97" id="gSe-8w-id5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="trailing" secondItem="m5M-fQ-kh0" secondAttribute="trailing" id="0HC-gd-h1u"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="34" id="0Jt-bq-TN5"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="-87" id="0jz-Z1-VAa"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="centerX" secondItem="m5M-fQ-kh0" secondAttribute="centerX" constant="132" id="15D-No-4tt"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="-44" id="2Fw-Kv-1t0"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="centerX" secondItem="COH-bG-c01" secondAttribute="centerX" id="2tj-qc-Nei"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" id="3Fr-WY-2d7"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Rn5-M7-YY7" secondAttribute="bottom" constant="39" id="3Yx-X0-0NW"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Rn5-M7-YY7" secondAttribute="bottom" id="3Yx-X0-0NW"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="48p-zn-htJ"/>
+                            <constraint firstItem="Rn5-M7-YY7" firstAttribute="centerX" secondItem="jdr-tN-1Kx" secondAttribute="centerX" id="4h1-X6-spk"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" constant="-264" id="4lg-ZG-YmM"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="5f0-KW-g5e"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="26" id="6if-3R-nG1"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="249" id="7Tf-DC-uQg"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-331" id="7X1-dk-QBY"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="Rn5-M7-YY7" secondAttribute="leading" id="7dI-UR-yPK"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="m5M-fQ-kh0" secondAttribute="trailing" id="7fJ-TX-bf6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COH-bG-c01" secondAttribute="trailing" constant="10" id="8G6-BN-1zf"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="8Hi-zK-dXE"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="COH-bG-c01" secondAttribute="trailing" constant="-80" id="8qM-fo-oGv"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leading" id="9x1-tR-qCv"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="301" id="A4Z-ob-lxD"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="Rn5-M7-YY7" secondAttribute="trailing" id="A5o-k1-mRt"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="bottom" secondItem="vFO-1Q-Cun" secondAttribute="top" constant="-29" id="APx-Xc-kna"/>
                             <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" constant="39" id="BQN-lT-Jtx"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="centerX" secondItem="COH-bG-c01" secondAttribute="centerX" id="BwT-WF-gxR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m5M-fQ-kh0" secondAttribute="trailing" constant="-20" id="CMj-Ml-xSQ"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" constant="-87" id="Cbr-SS-iwb"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="E1Z-6d-Osb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COH-bG-c01" secondAttribute="trailing" constant="231" id="E4w-ab-4Ud"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COH-bG-c01" secondAttribute="trailing" constant="231" id="EMK-u2-cRA"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="Rn5-M7-YY7" secondAttribute="trailing" id="EMT-AD-EVM"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="Rn5-M7-YY7" secondAttribute="leading" id="EUa-Rw-JI3"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="EaN-la-eI7"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="Eel-Sh-VEO"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" id="Fck-M5-6wB"/>
@@ -273,51 +334,80 @@
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="mMO-Og-v1s" secondAttribute="trailing" id="FvF-hc-Ang"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="GgM-cu-Mr9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rn5-M7-YY7" secondAttribute="trailing" constant="-20" id="GqH-wn-qxv"/>
+                            <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="58" id="HWc-f6-gTQ"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" id="It3-K3-KSg"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="centerX" secondItem="COH-bG-c01" secondAttribute="centerX" id="JPQ-Az-Ubq"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="232" id="Jbv-ng-adr"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="Js3-Sd-QXP"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="10" id="JwW-x7-eiu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Rn5-M7-YY7" secondAttribute="bottom" constant="39" id="KPf-hZ-Hva"/>
+                            <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="Kxm-Qj-Qpe"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="12" id="KyZ-Fc-v5O"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" id="LKT-1m-1Po"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" id="M6p-ug-Xz9"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="52" id="M8c-gY-Tnu"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="249" id="NKm-He-GLm"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="mMO-Og-v1s" secondAttribute="trailing" id="NPX-o9-Uho"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="O4e-3G-zEy"/>
                             <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="72" id="OTB-nb-7iJ"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="bottom" secondItem="mMO-Og-v1s" secondAttribute="top" id="OcH-i8-cIM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COH-bG-c01" secondAttribute="trailing" constant="192" id="Odr-oh-u4t"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" id="P2f-xa-H4K"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="P4f-VK-abW"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="PAB-Ve-MvY"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" id="PVA-Qy-quu"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="Qfe-rW-bg6"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="R9A-ey-8qR"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" id="RNg-Hv-RN8"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="44" id="RSK-iA-Wsd"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="RTF-BL-lZA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jdr-tN-1Kx" secondAttribute="trailing" constant="231" id="RYw-VJ-850"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="SNk-fF-ut8"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="width" secondItem="COH-bG-c01" secondAttribute="height" multiplier="21:10" id="Sj6-Qy-Xw2"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="SyF-iG-SSj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jdr-tN-1Kx" secondAttribute="trailing" constant="248" id="THo-0q-nOK"/>
+                            <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" constant="8" id="UFP-XF-h9e"/>
                             <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="26" id="UN6-O5-snz"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="m5M-fQ-kh0" secondAttribute="leading" id="UWL-Ih-oix"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="Uig-dn-3V4"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="Rn5-M7-YY7" secondAttribute="trailing" id="WoZ-8c-Njy"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="319" id="Wvr-XP-j7l"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Rn5-M7-YY7" secondAttribute="bottom" constant="39" id="XLB-FB-B1g"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="XZp-yN-Up9"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" id="XtG-3m-31A"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="26" id="YHo-a0-hJ4"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="ZGX-iW-rbo"/>
+                            <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="58" id="ZTk-2H-esK"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" constant="20" id="Zri-v1-UKn"/>
                             <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="72" id="a50-sd-Zcd"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leading" id="b6H-lT-dZO"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="264" id="bMg-by-75a"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="bPI-lB-DTv"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="bkU-Ja-pre"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="38" id="bx9-1M-m6U"/>
+                            <constraint firstItem="vFO-1Q-Cun" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="czn-Yw-E7m"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="czw-kf-esf"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-331" id="dFF-IE-ypz"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="Rn5-M7-YY7" secondAttribute="trailing" id="dIP-BJ-JrY"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="centerX" secondItem="Rn5-M7-YY7" secondAttribute="centerX" id="dQN-qF-Rpn"/>
+                            <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="5" id="dd9-vF-90G"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="Rn5-M7-YY7" secondAttribute="leading" id="dgn-dV-v41"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="232" id="dtj-uY-TgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COH-bG-c01" secondAttribute="trailing" constant="231" id="f42-ZX-kwF"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="mMO-Og-v1s" secondAttribute="trailing" id="fG5-hu-3gW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-20" id="fO0-6g-eZP"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="26" id="fZ6-Cb-LUe"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" id="fp9-z8-cnw"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="COH-bG-c01" secondAttribute="trailing" constant="-559" id="g1B-bb-BS9"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="gDk-6i-Hj4"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="h2H-bZ-EOd"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="h5b-Ks-oqG"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leading" id="hYz-h3-alr"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="373" id="hgE-RM-oL4"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="iZj-TH-22u"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="bottom" secondItem="mMO-Og-v1s" secondAttribute="top" id="jpi-eH-aEO"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="trailing" secondItem="mMO-Og-v1s" secondAttribute="trailing" id="kFg-Rv-CXm"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="26" id="kGT-Xe-Ajp"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="trailing" secondItem="mMO-Og-v1s" secondAttribute="trailing" id="kKY-LF-Kug"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="jdr-tN-1Kx" secondAttribute="bottom" constant="33" id="kaj-KX-K7A"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-331" id="lBX-Sl-Ral"/>
@@ -325,43 +415,66 @@
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="m5M-fQ-kh0" secondAttribute="leading" id="lNZ-gI-Caw"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="mAb-RV-D39"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-20" id="mui-Ti-Lqn"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="centerX" secondItem="COH-bG-c01" secondAttribute="centerX" id="nHs-hE-4ao"/>
                             <constraint firstItem="COH-bG-c01" firstAttribute="centerX" secondItem="X1q-Ba-Gmg" secondAttribute="centerX" id="nam-Dz-8cQ"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="39" id="nht-B9-Oyt"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-9" id="oE0-fp-kei"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="386" id="oLV-up-AXR"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="Rn5-M7-YY7" secondAttribute="trailing" id="oPO-nm-yQA"/>
                             <constraint firstAttribute="trailing" secondItem="m5M-fQ-kh0" secondAttribute="trailing" id="oWK-Lz-SHh"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="top" secondItem="COH-bG-c01" secondAttribute="bottom" constant="386" id="ocL-ae-7ob"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" id="p2f-rf-0p6"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="497" id="pIN-b4-wKC"/>
                             <constraint firstItem="m5M-fQ-kh0" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" id="rUz-cB-Fcc"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="centerX" secondItem="m5M-fQ-kh0" secondAttribute="centerX" id="rcP-yq-Hzc"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="centerX" secondItem="Rn5-M7-YY7" secondAttribute="centerX" id="rw3-UN-YXa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rn5-M7-YY7" secondAttribute="trailing" constant="-20" id="tJr-QS-A0a"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" id="tft-l5-7O0"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="centerX" secondItem="X1q-Ba-Gmg" secondAttribute="centerX" id="uWz-Um-V8f"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-570" id="um9-mb-ewn"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="trailing" secondItem="X1q-Ba-Gmg" secondAttribute="trailingMargin" id="vn2-EQ-3Wq"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="NS1-Bz-Sjk" secondAttribute="bottom" constant="70" id="w1d-bO-NVF"/>
+                            <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-589" id="w5Z-vJ-9yt"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="xjf-xD-iTD"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="-20" id="xq1-dk-hsZ"/>
                             <constraint firstItem="jdr-tN-1Kx" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="trailing" constant="-331" id="yRw-6l-HRw"/>
                             <constraint firstAttribute="trailing" secondItem="m5M-fQ-kh0" secondAttribute="trailing" id="yZe-hD-17N"/>
+                            <constraint firstItem="m5M-fQ-kh0" firstAttribute="leading" secondItem="mMO-Og-v1s" secondAttribute="leading" id="ygt-hD-Hwa"/>
+                            <constraint firstItem="COH-bG-c01" firstAttribute="leading" secondItem="X1q-Ba-Gmg" secondAttribute="leadingMargin" constant="36" id="yjK-Ae-aYU"/>
                             <constraint firstItem="mMO-Og-v1s" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="-5" id="znI-NX-UUq"/>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="top" secondItem="mMO-Og-v1s" secondAttribute="bottom" id="znV-Vs-EN6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="2tj-qc-Nei"/>
                                 <exclude reference="48p-zn-htJ"/>
+                                <exclude reference="4lg-ZG-YmM"/>
                                 <exclude reference="CMj-Ml-xSQ"/>
                                 <exclude reference="EMT-AD-EVM"/>
+                                <exclude reference="EUa-Rw-JI3"/>
                                 <exclude reference="FvF-hc-Ang"/>
+                                <exclude reference="JPQ-Az-Ubq"/>
+                                <exclude reference="NPX-o9-Uho"/>
+                                <exclude reference="O4e-3G-zEy"/>
                                 <exclude reference="OcH-i8-cIM"/>
                                 <exclude reference="R9A-ey-8qR"/>
+                                <exclude reference="WoZ-8c-Njy"/>
                                 <exclude reference="YHo-a0-hJ4"/>
                                 <exclude reference="dIP-BJ-JrY"/>
+                                <exclude reference="fG5-hu-3gW"/>
                                 <exclude reference="fZ6-Cb-LUe"/>
+                                <exclude reference="iZj-TH-22u"/>
                                 <exclude reference="jpi-eH-aEO"/>
                                 <exclude reference="kFg-Rv-CXm"/>
                                 <exclude reference="lLD-07-axj"/>
+                                <exclude reference="oWK-Lz-SHh"/>
+                                <exclude reference="rUz-cB-Fcc"/>
                                 <exclude reference="yZe-hD-17N"/>
+                                <exclude reference="0jz-Z1-VAa"/>
                                 <exclude reference="3Fr-WY-2d7"/>
                                 <exclude reference="7fJ-TX-bf6"/>
                                 <exclude reference="9x1-tR-qCv"/>
+                                <exclude reference="APx-Xc-kna"/>
                                 <exclude reference="E1Z-6d-Osb"/>
                                 <exclude reference="Fck-M5-6wB"/>
                                 <exclude reference="Fqy-dL-OgD"/>
@@ -369,6 +482,7 @@
                                 <exclude reference="LKT-1m-1Po"/>
                                 <exclude reference="M6p-ug-Xz9"/>
                                 <exclude reference="RNg-Hv-RN8"/>
+                                <exclude reference="RSK-iA-Wsd"/>
                                 <exclude reference="RTF-BL-lZA"/>
                                 <exclude reference="UWL-Ih-oix"/>
                                 <exclude reference="Zri-v1-UKn"/>
@@ -379,13 +493,59 @@
                                 <exclude reference="h2H-bZ-EOd"/>
                                 <exclude reference="hYz-h3-alr"/>
                                 <exclude reference="lNZ-gI-Caw"/>
+                                <exclude reference="mui-Ti-Lqn"/>
                                 <exclude reference="oPO-nm-yQA"/>
                                 <exclude reference="p2f-rf-0p6"/>
                                 <exclude reference="tft-l5-7O0"/>
                                 <exclude reference="vn2-EQ-3Wq"/>
                                 <exclude reference="w1d-bO-NVF"/>
+                                <exclude reference="xjf-xD-iTD"/>
                                 <exclude reference="xq1-dk-hsZ"/>
+                                <exclude reference="znI-NX-UUq"/>
+                                <exclude reference="0Jt-bq-TN5"/>
+                                <exclude reference="15D-No-4tt"/>
+                                <exclude reference="6if-3R-nG1"/>
+                                <exclude reference="8G6-BN-1zf"/>
+                                <exclude reference="E4w-ab-4Ud"/>
+                                <exclude reference="EMK-u2-cRA"/>
+                                <exclude reference="Jbv-ng-adr"/>
+                                <exclude reference="JwW-x7-eiu"/>
+                                <exclude reference="M8c-gY-Tnu"/>
+                                <exclude reference="Odr-oh-u4t"/>
+                                <exclude reference="P2f-xa-H4K"/>
+                                <exclude reference="UN6-O5-snz"/>
+                                <exclude reference="bMg-by-75a"/>
+                                <exclude reference="f42-ZX-kwF"/>
+                                <exclude reference="kGT-Xe-Ajp"/>
                                 <exclude reference="nam-Dz-8cQ"/>
+                                <exclude reference="nht-B9-Oyt"/>
+                                <exclude reference="rcP-yq-Hzc"/>
+                                <exclude reference="yjK-Ae-aYU"/>
+                                <exclude reference="7Tf-DC-uQg"/>
+                                <exclude reference="7X1-dk-QBY"/>
+                                <exclude reference="8qM-fo-oGv"/>
+                                <exclude reference="A4Z-ob-lxD"/>
+                                <exclude reference="BwT-WF-gxR"/>
+                                <exclude reference="Cbr-SS-iwb"/>
+                                <exclude reference="NKm-He-GLm"/>
+                                <exclude reference="PVA-Qy-quu"/>
+                                <exclude reference="RYw-VJ-850"/>
+                                <exclude reference="Sj6-Qy-Xw2"/>
+                                <exclude reference="THo-0q-nOK"/>
+                                <exclude reference="Wvr-XP-j7l"/>
+                                <exclude reference="XtG-3m-31A"/>
+                                <exclude reference="dFF-IE-ypz"/>
+                                <exclude reference="dQN-qF-Rpn"/>
+                                <exclude reference="dtj-uY-TgO"/>
+                                <exclude reference="g1B-bb-BS9"/>
+                                <exclude reference="hgE-RM-oL4"/>
+                                <exclude reference="lBX-Sl-Ral"/>
+                                <exclude reference="oE0-fp-kei"/>
+                                <exclude reference="oLV-up-AXR"/>
+                                <exclude reference="ocL-ae-7ob"/>
+                                <exclude reference="rw3-UN-YXa"/>
+                                <exclude reference="uWz-Um-V8f"/>
+                                <exclude reference="yRw-6l-HRw"/>
                                 <exclude reference="0HC-gd-h1u"/>
                                 <exclude reference="5f0-KW-g5e"/>
                                 <exclude reference="8Hi-zK-dXE"/>
@@ -395,9 +555,12 @@
                                 <exclude reference="GqH-wn-qxv"/>
                                 <exclude reference="Js3-Sd-QXP"/>
                                 <exclude reference="KPf-hZ-Hva"/>
+                                <exclude reference="P4f-VK-abW"/>
                                 <exclude reference="PAB-Ve-MvY"/>
                                 <exclude reference="Qfe-rW-bg6"/>
                                 <exclude reference="SNk-fF-ut8"/>
+                                <exclude reference="SyF-iG-SSj"/>
+                                <exclude reference="Uig-dn-3V4"/>
                                 <exclude reference="XLB-FB-B1g"/>
                                 <exclude reference="XZp-yN-Up9"/>
                                 <exclude reference="ZGX-iW-rbo"/>
@@ -410,22 +573,12 @@
                                 <exclude reference="mAb-RV-D39"/>
                                 <exclude reference="pIN-b4-wKC"/>
                                 <exclude reference="znV-Vs-EN6"/>
-                                <exclude reference="7Tf-DC-uQg"/>
-                                <exclude reference="7X1-dk-QBY"/>
-                                <exclude reference="8qM-fo-oGv"/>
-                                <exclude reference="A4Z-ob-lxD"/>
-                                <exclude reference="RYw-VJ-850"/>
-                                <exclude reference="Sj6-Qy-Xw2"/>
-                                <exclude reference="Wvr-XP-j7l"/>
-                                <exclude reference="dFF-IE-ypz"/>
-                                <exclude reference="dQN-qF-Rpn"/>
-                                <exclude reference="dtj-uY-TgO"/>
-                                <exclude reference="lBX-Sl-Ral"/>
-                                <exclude reference="uWz-Um-V8f"/>
-                                <exclude reference="yRw-6l-HRw"/>
                                 <exclude reference="BQN-lT-Jtx"/>
+                                <exclude reference="HWc-f6-gTQ"/>
+                                <exclude reference="Kxm-Qj-Qpe"/>
                                 <exclude reference="OTB-nb-7iJ"/>
                                 <exclude reference="a50-sd-Zcd"/>
+                                <exclude reference="czn-Yw-E7m"/>
                             </mask>
                         </variation>
                     </view>
@@ -444,7 +597,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZY-Vt-6px" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="936"/>
+            <point key="canvasLocation" x="1188" y="663"/>
         </scene>
         <!--collection-->
         <scene sceneID="ds8-F5-Uio">

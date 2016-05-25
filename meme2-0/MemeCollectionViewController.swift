@@ -11,12 +11,6 @@ import UIKit
 class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowlayout: UICollectionViewFlowLayout!
     @IBOutlet var memecollectionView: UICollectionView!
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let controller = segue.destinationViewController as! EditMemeViewController
-
-        controller.memecollectionView = memecollectionView
-    }
     // shared data model
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
@@ -34,23 +28,30 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        memecollectionView.reloadData()
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-        cell.memeImage.image = self.memes[indexPath.row].afterImage
+        cell.memeImage.image = memes[indexPath.row].afterImage
         return cell
     }
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
+    {
+        
+        let VC = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        let meme = memes[indexPath.row]
+        VC.meme = meme
+        navigationController!.pushViewController(VC, animated: true)
+    }
+
     @IBAction func addMeme(sender: AnyObject) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
+       presentViewController(vc, animated: true, completion: nil)
         
 
-    }
-    @IBAction func editMeme(sender: AnyObject) {
     }
 }

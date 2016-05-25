@@ -35,12 +35,12 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         super.viewDidLoad()
         let memeTextAttributes = [
             NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSForegroundColorAttributeName:UIColor.grayColor(),
+            NSForegroundColorAttributeName:UIColor.whiteColor(),
             NSFontAttributeName:UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: 8
+            NSStrokeWidthAttributeName: -10
         ]
-        self.bottomText.delegate = self
-        self.topText.delegate = self
+        bottomText.delegate = self
+        topText.delegate = self
 
         bottomText.defaultTextAttributes = memeTextAttributes
         topText.defaultTextAttributes = memeTextAttributes
@@ -52,7 +52,10 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
     override func viewWillAppear(animated: Bool) {
         subscribeToKeyboardNotifications()
         super.viewWillAppear(animated)
+        imagePickerView.contentMode = .ScaleAspectFit
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        topText.textAlignment = .Center
+        bottomText.textAlignment = .Center
         firstTop = true
         firstBottom = true
         if( aMeme != nil){
@@ -62,7 +65,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
             bottomText.text = aMeme.bottomText
             topText.text = aMeme.topText
             
-            imagePickerView.image?.drawInRect(CGRect(x: 0,y: 0,width: self.view.frame.size.width,height: self.view.frame.size.height))
+            imagePickerView.image?.drawInRect(CGRect(x: 0,y: 0,width: view.frame.size.width,height: view.frame.size.height))
            imagePickerView.image = aMeme.originalImage
         }
     }
@@ -91,6 +94,8 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        
         return true
     }
     
@@ -111,7 +116,8 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         if(imagePicker != nil){
           imagePickerControllerDidCancel(imagePicker)
         }else {
-          self.dismissViewControllerAnimated(true, completion: nil)
+          
+          dismissViewControllerAnimated(true, completion: nil)
         }
         
        
@@ -131,7 +137,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
     
-        self.presentViewController(imagePicker,animated: true, completion:nil)
+        presentViewController(imagePicker,animated: true, completion:nil)
  
     }
     
@@ -153,11 +159,9 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         
         // Render view to an image
         hideBar(true)
-        UIGraphicsBeginImageContext(imagePickerView.image!.size)
-        imagePickerView.image!.drawInRect(CGRect(x: 0,y: 0,width: imagePickerView.image!.size.width,height: imagePickerView.image!.size.height))
-        //UIGraphicsBeginImageContext(self.view.frame.size)
-       // view.drawViewHierarchyInRect(self.view.frame,
-        //    afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
+            afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -185,13 +189,13 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
         ac.completionWithItemsHandler = { (activity, ok, items,error) in
             if(ok == true) {
                 // save a memeObject
-                let ameme = Meme(topText: self.topText.text!, bottomText: self.bottomText.text!, originalImage: self.imagePickerView.image!, afterImage: memeimage)
+                let ameme = Meme( topText: self.topText.text!, bottomText: self.bottomText.text!, originalImage: self.imagePickerView.image!, afterImage: memeimage)
                 self.saveToArray(ameme)
                 //dismissView
-                ac.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        self.presentViewController(ac, animated: true, completion: nil)
+       presentViewController(ac, animated: true, completion: nil)
         
         
     }
@@ -203,13 +207,13 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate ,
     
     func keyboardWillShow(notification: NSNotification) {
         if( bottomText.isFirstResponder() == true){
-          view.frame.origin.y -= getKeyboardHeight(notification)
+          view.frame.origin.y = getKeyboardHeight(notification) * -1
         }
     }
     
     func keyboardWillHide(notification: NSNotification){
         if( bottomText.isFirstResponder() == true){
-          view.frame.origin.y += getKeyboardHeight(notification)
+          view.frame.origin.y = 0
         }
     }
     
