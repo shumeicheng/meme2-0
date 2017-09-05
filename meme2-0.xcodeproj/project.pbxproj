@@ -209,15 +209,18 @@
 					F16C2F231CAF731F00C57725 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = KNSC7P9S3V;
+						LastSwiftMigration = 0830;
 					};
 					F16C2F371CAF731F00C57725 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = KNSC7P9S3V;
+						LastSwiftMigration = 0830;
 						TestTargetID = F16C2F231CAF731F00C57725;
 					};
 					F16C2F421CAF731F00C57725 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = KNSC7P9S3V;
+						LastSwiftMigration = 0830;
 						TestTargetID = F16C2F231CAF731F00C57725;
 					};
 				};
@@ -425,6 +428,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -437,6 +441,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -448,6 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meme2-0.app/meme2-0";
 			};
 			name = Debug;
@@ -460,6 +466,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/meme2-0.app/meme2-0";
 			};
 			name = Release;
@@ -471,6 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "meme2-0";
 				USES_XCTRUNNER = YES;
 			};
@@ -483,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shumei.cheng.ca-gmail.com.meme2-0UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "meme2-0";
 				USES_XCTRUNNER = YES;
 			};

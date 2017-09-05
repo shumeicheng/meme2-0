@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="90m-gr-v6E">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="90m-gr-v6E">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Sent Meme-->
@@ -14,7 +18,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Kx6-i8-SKy" userLabel="tab bar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="h91-vc-3zl" kind="relationship" relationship="viewControllers" id="CQ0-l8-Avu"/>
@@ -51,25 +55,25 @@
                         <viewControllerLayoutGuide type="bottom" id="j8M-MW-F60"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YDb-Nn-1lL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Prk-4F-bRf">
-                                <rect key="frame" x="5" y="64" width="590" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="1" y="64" width="318" height="455"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" textLabel="301-fL-hIn" rowHeight="80" style="IBUITableViewCellStyleDefault" id="V0w-nH-ZQi" userLabel="MemeTableViewCell" customClass="MemeTableViewCell" customModule="meme2_0" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="590" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="318" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="V0w-nH-ZQi" id="yMz-Ig-Vzw">
-                                            <rect key="frame" x="0.0" y="0.0" width="590" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="318" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AMeme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="301-fL-hIn">
-                                                    <rect key="frame" x="15" y="0.0" width="560" height="79"/>
+                                                    <rect key="frame" x="15" y="0.0" width="288" height="79.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -82,7 +86,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Prk-4F-bRf" firstAttribute="top" secondItem="D1R-K2-emO" secondAttribute="bottom" id="LLb-Rt-DuZ"/>
                             <constraint firstItem="Prk-4F-bRf" firstAttribute="leading" secondItem="YDb-Nn-1lL" secondAttribute="leadingMargin" constant="-15" id="OdA-hu-7X0"/>
@@ -115,9 +119,9 @@
             <objects>
                 <collectionViewController id="HkA-fv-hZi" customClass="MemeCollectionViewController" customModule="meme2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="h6T-y0-GPb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GFz-Ql-Kqr">
                             <size key="itemSize" width="214" height="116"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -126,7 +130,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="yOe-nE-clw" customClass="MemeCollectionViewCell" customModule="meme2_0" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="214" height="116"/>
+                                <rect key="frame" x="53" y="0.0" width="214" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="214" height="116"/>
@@ -136,7 +140,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="214" height="116"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="bl9-rD-3s2" secondAttribute="bottom" constant="-8" id="8Sr-al-3y5"/>
@@ -185,14 +188,14 @@
                         <viewControllerLayoutGuide type="bottom" id="r7f-h3-ET5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0gL-7a-0Ae">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Th-x7-bvg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Th-x7-bvg" firstAttribute="leading" secondItem="0gL-7a-0Ae" secondAttribute="leadingMargin" constant="-20" id="Krj-oP-Prc"/>
                             <constraint firstItem="0Th-x7-bvg" firstAttribute="top" secondItem="Mkk-4u-NNq" secondAttribute="bottom" constant="-20" id="P4R-ue-ie7"/>
@@ -217,14 +220,14 @@
                         <viewControllerLayoutGuide type="bottom" id="vFO-1Q-Cun"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X1q-Ba-Gmg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-Og-v1s">
-                                <rect key="frame" x="0.0" y="81" width="600" height="467"/>
+                                <rect key="frame" x="-4" y="81" width="328" height="435"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-M7-YY7" userLabel="bottom bar">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="sKK-rd-Bey"/>
                                 </constraints>
@@ -248,7 +251,7 @@
                                 </variation>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-tN-1Kx">
-                                <rect key="frame" x="11" y="469" width="578" height="29"/>
+                                <rect key="frame" x="-265" y="437" width="850" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="Pd5-nc-qos"/>
                                 </constraints>
@@ -256,7 +259,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COH-bG-c01">
-                                <rect key="frame" x="30" y="108" width="540" height="17"/>
+                                <rect key="frame" x="-246" y="108" width="812" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cga-cY-7YO"/>
                                     <constraint firstAttribute="width" constant="97" id="gSe-8w-id5"/>
@@ -275,7 +278,7 @@
                                 </variation>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5M-fQ-kh0">
-                                <rect key="frame" x="0.0" y="32" width="600" height="44"/>
+                                <rect key="frame" x="-4" y="32" width="328" height="44"/>
                                 <items>
                                     <navigationItem title="Meme editor" id="TZK-Me-CC4">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="EA6-wV-cYf">
@@ -292,7 +295,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Rn5-M7-YY7" firstAttribute="trailing" secondItem="m5M-fQ-kh0" secondAttribute="trailing" id="0HC-gd-h1u"/>
                             <constraint firstItem="COH-bG-c01" firstAttribute="top" secondItem="m5M-fQ-kh0" secondAttribute="bottom" constant="34" id="0Jt-bq-TN5"/>

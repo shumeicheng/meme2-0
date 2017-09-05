@@ -13,7 +13,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet var memecollectionView: UICollectionView!
     // shared data model
     var memes: [Meme] {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+        return (UIApplication.shared.delegate as! AppDelegate).memes
     }
 
     
@@ -24,33 +24,33 @@ class MemeCollectionViewController: UICollectionViewController {
         let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
         flowlayout.minimumInteritemSpacing = space
-        flowlayout.itemSize = CGSizeMake(dimension, dimension)
+        flowlayout.itemSize = CGSize(width: dimension, height: dimension)
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         memecollectionView.reloadData()
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         cell.memeImage.image = memes[indexPath.row].afterImage
         return cell
     }
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath)
     {
         
-        let VC = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        let VC = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         let meme = memes[indexPath.row]
         VC.meme = meme
         navigationController!.pushViewController(VC, animated: true)
     }
 
-    @IBAction func addMeme(sender: AnyObject) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
-       presentViewController(vc, animated: true, completion: nil)
+    @IBAction func addMeme(_ sender: AnyObject) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "EditMemeViewController") as! EditMemeViewController
+       present(vc, animated: true, completion: nil)
         
 
     }
